@@ -14,9 +14,9 @@ public class ControllerMainJTable/* extends JPanel*/ {
     private JButton leftBorderBt, toLeftBt, rightBorderBt, toRightBt;
     private JTextArea numberOfAllPagesTextArea;
     private JTextField numberOfPageTextField;
-    private int page = 1;
-    private int rows = 4;
-    private int columns = 5;
+    private int tableCurrentPage = 1;
+    private int tableRows = 4;
+    private int tableColumns = 5;
     private AbstractTableModel tableModel;
 
     @SuppressWarnings("serial")
@@ -41,7 +41,7 @@ public class ControllerMainJTable/* extends JPanel*/ {
         rightBorderBt.setBounds(1135, 290 + plusY, 65, 50);
         panelWithTable.add(rightBorderBt);
 
-        numberOfPageTextField = new JTextField(String.valueOf(page));
+        numberOfPageTextField = new JTextField(String.valueOf(tableCurrentPage));
         numberOfPageTextField.setBounds(555, 315 + plusY, 35, 20);
         panelWithTable.add(numberOfPageTextField);
         numberOfAllPagesTextArea = new JTextArea(" / " + numberOfAllPages(items, numberOfItemsOnPage));
@@ -60,12 +60,12 @@ public class ControllerMainJTable/* extends JPanel*/ {
         toLeftBt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(page == 1){
-                    page = numberOfAllPages(items, numberOfItemsOnPage);
+                if(tableCurrentPage == 1){
+                    tableCurrentPage = numberOfAllPages(items, numberOfItemsOnPage);
                 } else {
-                    page --;
+                    tableCurrentPage--;
                 }
-                numberOfPageTextField.setText(String.valueOf(page));
+                numberOfPageTextField.setText(String.valueOf(tableCurrentPage));
                 pane.removeAll();
                 drawTable(items, numberOfItemsOnPage);
                 JScrollPane scrollPane = new JScrollPane(table);
@@ -78,12 +78,12 @@ public class ControllerMainJTable/* extends JPanel*/ {
         toRightBt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(page == numberOfAllPages(items, numberOfItemsOnPage)){
-                    page = 1;
+                if(tableCurrentPage == numberOfAllPages(items, numberOfItemsOnPage)){
+                    tableCurrentPage = 1;
                 } else {
-                    page ++;
+                    tableCurrentPage++;
                 }
-                numberOfPageTextField.setText(String.valueOf(page));
+                numberOfPageTextField.setText(String.valueOf(tableCurrentPage));
                 drawTable(items, numberOfItemsOnPage);
                 JScrollPane scrollPane = new JScrollPane(table);
                 scrollPane.setBounds(0, 350 + plusY, 1200, 102 + (numberOfItemsOnPage - 5)*16);
@@ -95,8 +95,8 @@ public class ControllerMainJTable/* extends JPanel*/ {
         leftBorderBt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                page = 1;
-                numberOfPageTextField.setText(String.valueOf(page));
+                tableCurrentPage = 1;
+                numberOfPageTextField.setText(String.valueOf(tableCurrentPage));
                 drawTable(items, numberOfItemsOnPage);
                 JScrollPane scrollPane = new JScrollPane(table);
                 scrollPane.setBounds(0, 350 + plusY, 1200, 102 + (numberOfItemsOnPage - 5)*16);
@@ -108,8 +108,8 @@ public class ControllerMainJTable/* extends JPanel*/ {
         rightBorderBt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                page = numberOfAllPages(items, numberOfItemsOnPage);
-                numberOfPageTextField.setText(String.valueOf(page));
+                tableCurrentPage = numberOfAllPages(items, numberOfItemsOnPage);
+                numberOfPageTextField.setText(String.valueOf(tableCurrentPage));
                 drawTable(items, numberOfItemsOnPage);
                 JScrollPane scrollPane = new JScrollPane(table);
                 scrollPane.setBounds(0, 350 + plusY, 1200, 102 + (numberOfItemsOnPage - 5)*16);
@@ -128,44 +128,44 @@ public class ControllerMainJTable/* extends JPanel*/ {
     }
 
     private void drawTable(List<Item> items, int numberOfItemsOnPage){
-        if (page == numberOfAllPages(items, numberOfItemsOnPage) && items.size() % numberOfItemsOnPage != 0){
-            rows = items.size() % numberOfItemsOnPage;
+        if (tableCurrentPage == numberOfAllPages(items, numberOfItemsOnPage) && items.size() % numberOfItemsOnPage != 0){
+            tableRows = items.size() % numberOfItemsOnPage;
         } else{
-            rows = numberOfItemsOnPage;
+            tableRows = numberOfItemsOnPage;
         }
 
         tableModel = new AbstractTableModel() {
             @Override
             public int getRowCount() {
-                return rows;
+                return tableRows;
             }
 
             @Override
             public int getColumnCount() {
-                return columns;
+                return tableColumns;
             }
 
             @Override
             public String getValueAt(int rowIndex, int columnIndex) {
                 switch (columnIndex) {
                     case 0: {
-                        return items.get(rowIndex + numberOfItemsOnPage*(page-1)).getItemName();
+                        return items.get(rowIndex + numberOfItemsOnPage*(tableCurrentPage -1)).getItemName();
 
                     }
                     case 1: {
-                        return items.get(rowIndex + numberOfItemsOnPage*(page-1)).getManufacturerName();
+                        return items.get(rowIndex + numberOfItemsOnPage*(tableCurrentPage -1)).getManufacturerName();
 
                     }
                     case 2: {
-                        return items.get(rowIndex + numberOfItemsOnPage*(page-1)).getManufacturerPAN();
+                        return items.get(rowIndex + numberOfItemsOnPage*(tableCurrentPage -1)).getManufacturerPAN();
 
                     }
                     case 3: {
-                        return items.get(rowIndex + numberOfItemsOnPage*(page-1)).getItemsInStock();
+                        return items.get(rowIndex + numberOfItemsOnPage*(tableCurrentPage -1)).getItemsInStock();
 
                     }
                     case 4: {
-                        return items.get(rowIndex + numberOfItemsOnPage*(page-1)).getStockAddress();
+                        return items.get(rowIndex + numberOfItemsOnPage*(tableCurrentPage -1)).getStockAddress();
 
                     }
                     default:

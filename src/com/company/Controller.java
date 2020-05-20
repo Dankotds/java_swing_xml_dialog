@@ -128,15 +128,14 @@ public class Controller {
             list.clear();
         }
         try {
-            // Cтpoиm oбъekтнyю moдeль иcхoднoгo XML фaйлa            
+
             final File xmlFile = new File(filePath);
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.parse(xmlFile);
-            //Выпoлнять нopmaлизaцию нe oбязaтeльнo, нo pekomeндyeтcя            
             doc.getDocumentElement().normalize();
 
-            //Пoлyчaem вce yзлы c иmeнem "item"
+
             NodeList nodeList = doc.getElementsByTagName("item");
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Node node = nodeList.item(i);
@@ -152,7 +151,6 @@ public class Controller {
             }
         }
         catch (ParserConfigurationException | SAXException | IOException ex) {
-            //Logger.getLogger(ReadXMLFileDOMExample.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -170,9 +168,9 @@ public class Controller {
 
     public static void updateXMLFile(List <Item> list){
         try {
-            // Создается построитель документа
+
             DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            // Создается дерево DOM документа из файла
+
             Document document = documentBuilder.newDocument();
             Element rootElement = document.createElement("stock");
             document.appendChild(rootElement);
@@ -180,7 +178,7 @@ public class Controller {
                 for(int i = 0; i<list.size(); i++) {
                     addNewItem(root, document, list.get(i).getItemName(), list.get(i).getManufacturerName(), list.get(i).getManufacturerPAN(), list.get(i).getItemsInStock(), list.get(i).getStockAddress());
                 }
-            // Записываем XML в файл
+
             writeDocument(document);
         } catch (ParserConfigurationException ex) {
             ex.printStackTrace(System.out);
@@ -189,32 +187,33 @@ public class Controller {
 
     // Функция добавления нового товара и записи результата в файл
     private static void addNewItem(Node root, Document document, String itemNameText, String manufacturerNameText, String manufacturerPANText, String itemsInStockText, String stockAddressText) throws TransformerFactoryConfigurationError, DOMException {
-        // Создаем новый товар по элементам
-        // Сам товар <item>
+
         Element item = document.createElement("item");
+
         // <itemName>
         Element itemName = document.createElement("itemName");
-        // Устанавливаем значение текста внутри тега
         itemName.setTextContent(itemNameText);
+
         // <manufacturerName>
         Element manufacturerName = document.createElement("manufacturerName");
         manufacturerName.setTextContent(manufacturerNameText);
+
         // <manufacturerPAN>
         Element manufacturerPAN = document.createElement("manufacturerPAN");
         manufacturerPAN.setTextContent(manufacturerPANText);
+
         // <itemsInStock>
         Element itemsInStock = document.createElement("itemsInStock");
         itemsInStock.setTextContent(itemsInStockText);
         Element stockAddress = document.createElement("stockAddress");
         stockAddress.setTextContent(stockAddressText);
 
-        // Добавляем внутренние элементы товара в элемент <item>
         item.appendChild(itemName);
         item.appendChild(manufacturerName);
         item.appendChild(manufacturerPAN);
         item.appendChild(itemsInStock);
         item.appendChild(stockAddress);
-        // Добавляем товар в корневой элемент
+        
         root.appendChild(item);
     }
 
