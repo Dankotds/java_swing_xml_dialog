@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DeleteFrame extends JFrame {
-    public List<Item> itemsForDelete = new ArrayList<Item>();
-    public List<Item> allItems = new ArrayList<Item>();
+    private List<Item> itemsForDelete = new ArrayList<Item>();
+    private List<Item> allItems = new ArrayList<Item>();
     MainFrame mainFrame = new MainFrame();
     Controller controller;
     private JPanel jPanelFind = new JPanel();

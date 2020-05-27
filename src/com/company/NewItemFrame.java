@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NewItemFrame extends JFrame {
-    public List<Item> allItems = new ArrayList<Item>();
+    private List<Item> allItems = new ArrayList<Item>();
     MainFrame mainFrame = new MainFrame();
     Controller controller = new Controller();
     private JPanel jPanelFind = new JPanel();

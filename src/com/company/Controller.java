@@ -59,7 +59,7 @@ public class Controller {
         return area;
     }
 
-    public void checkAndFindFromXML(String pathFile, String box, String field, List<Item> itemsList){
+    private void checkAndFindFromXML(String pathFile, String box, String field, List<Item> itemsList){
         loadFromXMLToList(pathFile, itemsList, true, box, field);
     }
 

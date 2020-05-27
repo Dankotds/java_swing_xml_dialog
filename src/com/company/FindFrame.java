@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindFrame extends JFrame {
-    public List<Item> itemsForFind = new ArrayList<Item>();
+    private List<Item> itemsForFind = new ArrayList<Item>();
     Controller controller;
     MainFrame mainFrame = new MainFrame();
     private JPanel jPanelFind = new JPanel();
