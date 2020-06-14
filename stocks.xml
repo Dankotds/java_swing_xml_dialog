@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<stock>
+    <item>
+        <itemName>Пшено</itemName>
+        <manufacturerName>Продуктовый завод №1</manufacturerName>
+        <manufacturerPAN>258369147</manufacturerPAN>
+        <itemsInStock>15</itemsInStock>
+        <stockAddress>ул.Ванеева 25</stockAddress>
+    </item>
+    <item>
+        <itemName>Брусок дерева</itemName>
+        <manufacturerName>Строительный завод №1</manufacturerName>
+        <manufacturerPAN>516465123</manufacturerPAN>
+        <itemsInStock>47</itemsInStock>
+        <stockAddress>ул.Петрова 57</stockAddress>
+    </item>
+    <item>
+        <itemName>Тарелка</itemName>
+        <manufacturerName>Сервизный завод №4</manufacturerName>
+        <manufacturerPAN>1256574197263</manufacturerPAN>
+        <itemsInStock>47</itemsInStock>
+        <stockAddress>ул.Челюскинцев 144</stockAddress>
+    </item>
+    <item>
+        <itemName>Маска</itemName>
+        <manufacturerName>Аптека №4 г.Минска</manufacturerName>
+        <manufacturerPAN>121294758</manufacturerPAN>
+        <itemsInStock>7000</itemsInStock>
+        <stockAddress>ул.Филимонова 77</stockAddress>
+    </item>
+    <item>
+        <itemName>Миска</itemName>
+        <manufacturerName>Сервизный завод №4</manufacturerName>
+        <manufacturerPAN>19713255568</manufacturerPAN>
+        <itemsInStock>нет на складе</itemsInStock>
+        <stockAddress>ул.Челюскинцев 144</stockAddress>
+    </item>
+    <item>
+        <itemName>Поршень</itemName>
+        <manufacturerName>Строительный завод №2</manufacturerName>
+        <manufacturerPAN>1645197823</manufacturerPAN>
+        <itemsInStock>7000</itemsInStock>
+        <stockAddress>ул.Апрельская 4</stockAddress>
+    </item>
+    <item>
+        <itemName>Песок</itemName>
+        <manufacturerName>Строительный завод №1</manufacturerName>
+        <manufacturerPAN>51563825387</manufacturerPAN>
+        <itemsInStock>1684</itemsInStock>
+        <stockAddress>ул.Петрова 57</stockAddress>
+    </item>
+    <item>
+        <itemName>Грунт</itemName>
+        <manufacturerName>Строительный завод №2</manufacturerName>
+        <manufacturerPAN>15276978211</manufacturerPAN>
+        <itemsInStock>нет на складе</itemsInStock>
+        <stockAddress>ул.Апрельская 4</stockAddress>
+    </item>
+</stock>
